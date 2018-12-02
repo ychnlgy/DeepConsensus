@@ -12,7 +12,7 @@ To see how DeepConsensus improves the robustness of an arbitrary CNN, run:
 ```bash
 python3 mnist_train.py
 ```
-This will train the CNN and its DeepConsensus version on a ```64x64``` MNIST dataset, with only the test set perturbed with 20 pixel translations in both x and y axes. Pay special attention to test scores.
+This will train the CNN and its DeepConsensus version on a ```64x64``` MNIST dataset, with only the test set perturbed with 20 pixel translations in both x and y axes. Note the massive improvement in test scores.
 
 ## Navigation
 
