@@ -155,8 +155,5 @@ Accuracy          : %.5f    %.5f''' % (title, c_loss/n, d_loss/n, c_err/n, d_err
                 
                 n += 1.0
             
-            cnn_lr_scheduler.step(c_err/n)
-            deepconsensus_cnn_lr_scheduler.step(d_err/n)
-            
             report("Testing", c_loss, d_loss, c_err, d_err, n)
             
