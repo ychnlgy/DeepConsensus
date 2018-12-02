@@ -6,7 +6,7 @@ if __name__ == "__main__":
     
     import mnist, cnn_example, deepconsensus_example
     
-    print('''\
+    print('''
 ***
 
 Training on MNIST centered in a 64x64 black image
@@ -48,7 +48,7 @@ where images are translated 20 pixels in both the x and y axes.
     
     def count_parameters(model, name):
         count = sum(map(torch.numel, model.parameters()))
-        print("%s model has %d (%.2f million) parameters." % (name, count, count/1e-6))
+        print("%s model has %d (%.2f million) parameters." % (name, count, count/1e6))
     
     count_parameters(cnn, "CNN")
     count_parameters(deepconsensus_cnn, "DeepConsensus-CNN")
@@ -77,11 +77,10 @@ where images are translated 20 pixels in both the x and y axes.
         return loss, error
     
     def report(name, loss_sum, err_sum, n):
-        print('''
+        print('''\
  >> [%s]
     Cross entropy loss: %.5f
-    Accuracy          : %.5f
-''' % (name, loss_sum/n, err_sum/n))
+    Accuracy          : %.5f''' % (name, loss_sum/n, err_sum/n))
 
     EPOCHS = 30
     
