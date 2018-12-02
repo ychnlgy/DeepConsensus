@@ -89,7 +89,7 @@ def make_data_corrupt(data, kwargs):
     out = numpy.array(out)
     out = torch.from_numpy(out).float()
     out = out.view(N, W, H, C).permute(0, 3, 1, 2)
-    return out/255.0 # numpy converts 1.0 -> 255.0 automatically...
+    return out
 
 def translate(im, mintrans=0, maxtrans=0):
     

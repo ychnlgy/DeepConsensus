@@ -18,7 +18,7 @@ where images are translated 20 pixels in both the x and y axes.
     
     # STEP 1: Get data
     
-    TRANSLATE = 2
+    TRANSLATE = 20
     
     trainData, trainLabels, testData, testLabels, NUM_CLASSES, CHANNELS, IMAGESIZE = mnist.get_mnist64_corrupt(
         download = True,
