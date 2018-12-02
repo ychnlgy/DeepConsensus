@@ -76,11 +76,12 @@ where images are translated 20 pixels in both the x and y axes.
         error = (yh.max(dim=1)[1] == y).float().mean()
         return loss, error
     
-    def report(name, loss_sum, err_sum, n):
+    def report(title, c_loss, d_loss, c_err, d_err, n):
         print('''\
- >> [%s]
-    Cross entropy loss: %.5f
-    Accuracy          : %.5f''' % (name, loss_sum/n, err_sum/n))
+ === %s results ===
+                    CNN        DeepConsensus-CNN
+Cross entropy loss: %.5f    %.5f
+Accuracy          : %.5f    %.5f''' % (title, c_loss/n, d_loss/n, c_err/n, d_err/n))
 
     EPOCHS = 30
     
@@ -107,10 +108,7 @@ where images are translated 20 pixels in both the x and y axes.
             
             n += 1.0
         
-        print(" === Training results === ")
-        
-        report("CNN", c_loss, c_err, n)
-        report("DeepConsensus-CNN", d_loss, d_err, n)
+        report("Training", c_loss, d_loss, c_err, d_err, n)
         
         with torch.no_grad():
             cnn.eval()
@@ -137,10 +135,7 @@ where images are translated 20 pixels in both the x and y axes.
             cnn_lr_scheduler.step(c_err/n)
             deepconsensus_cnn_lr_scheduler.step(d_err/n)
             
-            print(" === Validation results === ")
-            
-            report("CNN", c_loss, c_err, n)
-            report("DeepConsensus-CNN", d_loss, d_err, n)
+            report("Validation", c_loss, d_loss, c_err, d_err, n)
             
             # === TESTING ===
             
@@ -163,8 +158,5 @@ where images are translated 20 pixels in both the x and y axes.
             cnn_lr_scheduler.step(c_err/n)
             deepconsensus_cnn_lr_scheduler.step(d_err/n)
             
-            print(" === Testing results === ")
-            
-            report("CNN", c_loss, c_err, n)
-            report("DeepConsensus-CNN", d_loss, d_err, n)
+            report("Testing", c_loss, d_loss, c_err, d_err, n)
             
