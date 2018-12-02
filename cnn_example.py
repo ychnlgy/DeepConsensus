@@ -1,7 +1,7 @@
 import torch
 
 class Cnn(torch.nn.Module):
-    "Input 32x32 or 64x64 images."
+    "This is an arbitrary model. Input 32x32 or 64x64 images."
     
     def __init__(self, channels, classes, imagesize):
         super(Cnn, self).__init__()
