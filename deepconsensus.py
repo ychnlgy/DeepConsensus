@@ -2,9 +2,12 @@ import torch
 
 class DeepConsensusLayer(torch.nn.Module):
 
-    def __init__(self, h, hiddensize, classes):
+    def __init__(self, hiddensize, classes):
         super(DeepConsensusLayer, self).__init__()
-        self.h = h
+        self.h = torch.nn.Sequential(
+            torch.nn.Conv2d(hiddensize, hiddensize, 1),
+            torch.nn.LeakyReLU()
+        )
         self.prototypes = torch.nn.Parameter(
             torch.rand(classes, hiddensize).normal_(mean=0, std=0.02)
         )

@@ -9,34 +9,13 @@ class DeepConsensusCnn(cnn_example.Cnn):
         self.deepconsensuslayers = torch.nn.ModuleList([
             
             # for Cnn BLOCK 2
-            deepconsensus.DeepConsensusLayer(
-                h = torch.nn.Sequential(
-                    torch.nn.Conv2d(64, 64, 1),
-                    torch.nn.LeakyReLU()
-                ),
-                hiddensize = 64,
-                classes = classes
-            ),
+            deepconsensus.DeepConsensusLayer(64, classes),
             
             # for Cnn BLOCK 4
-            deepconsensus.DeepConsensusLayer(
-                h = torch.nn.Sequential(
-                    torch.nn.Conv2d(128, 128, 1),
-                    torch.nn.LeakyReLU()
-                ),
-                hiddensize = 128,
-                classes = classes
-            ),
+            deepconsensus.DeepConsensusLayer(128, classes),
             
             # for Cnn BLOCK 6
-            deepconsensus.DeepConsensusLayer(
-                h = torch.nn.Sequential(
-                    torch.nn.Conv2d(256, 256, 1),
-                    torch.nn.LeakyReLU()
-                ),
-                hiddensize = 256,
-                classes = classes
-            )
+            deepconsensus.DeepConsensusLayer(256, classes)
             
         ])
         
